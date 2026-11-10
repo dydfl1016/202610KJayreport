@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2026년 10월 김제이 학습보고서 | LE ENGLISH</title><style>
+    /* ==================================================
+       1. DESIGN SYSTEM & CSS VARIABLES
+       ================================================== */
+    :root {
+      /* Brand Palette: Deep Navy & Educational Blue */
+      --color-primary: #0F172A;          /* Slate 900 */
+      --color-primary-light: #1E293B;    /* Slate 800 */
+      --color-accent: #1D4ED8;           /* Blue 700 */
+      --color-accent-subtle: #EFF6FF;     /* Blue 50 */
+      --color-accent-border: #BFDBFE;     /* Blue 200 */
+
+      --color-teal: #0D9488;             /* Teal 600 - Observed state */
+      --color-teal-subtle: #F0FDFA;       /* Teal 50 */
+      --color-teal-border: #99F6E4;       /* Teal 200 */
+
+      --color-bg: #F8FAFC;               /* Slate 50 */
+      --color-surface: #FFFFFF;
+      --color-surface-subtle: #F1F5F9;   /* Slate 100 */
+      --color-border: #E2E8F0;           /* Slate 200 */
+
+      --color-text-main: #0F172A;
+      --color-text-body: #334155;        /* Slate 700 */
+      --color-text-muted: #64748B;       /* Slate 500 */
+      --color-text-light: #94A3B8;       /* Slate 400 */
+
+      /* Typography */
+      --font-ko: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      --font-en: 'Plus Jakarta Sans', var(--font-ko);
+
+      /* Layout */
+      --container-max-w: 640px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      /* Elevation */
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 4px 12px -2px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.02);
+      --shadow-elevated: 0 12px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+
+      /* Motion */
+      --timing-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-normal: 0.5s;
+    }
+
+    /* ==================================================
+       2. RESET & BASE RULES
+       ================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-body);
+      font-family: var(--font-ko);
+      font-size: 16px;
+      line-height: 1.78;
+      letter-spacing: -0.015em;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .report-shell {
+      max-width: var(--container-max-w);
+      margin: 0 auto;
+      padding: 0 20px 80px 20px;
+    }
+
+    /* Standard Section Structure */
+    .report-section {
+      padding: 44px 0;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1.4375rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.4;
+      letter-spacing: -0.025em;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      font-size: 0.96875rem;
+      color: var(--color-text-body);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .content-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-card);
+    }
+
+    /* Scroll Reveal Engine */
+    .reveal-item {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.6s var(--timing-smooth), transform 0.6s var(--timing-smooth);
+      will-change: opacity, transform;
+    }
+
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==================================================
+       01 HERO
+       ================================================== */
+    .report-hero {
+      padding: 60px 0 36px 0;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge-brand {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+
+    .hero-badge-student {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text-body);
+      background: var(--color-surface-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+    }
+
+    .hero-badge-term {
+      font-family: var(--font-en);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      background: var(--color-accent-subtle);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
+
+    .hero-headline {
+      font-size: 1.875rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--color-primary);
+      margin-bottom: 18px;
+      letter-spacing: -0.035em;
+    }
+
+    .hero-headline span.accent-text {
+      color: var(--color-accent);
+    }
+
+    .hero-narrative {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--color-text-body);
+      border-left: 2px solid var(--color-accent-border);
+      padding-left: 16px;
+    }
+
+    .hero-narrative p + p {
+      margin-top: 10px;
+    }
+
+    .archive-card {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-elevated);
+    }
+
+    .archive-eyebrow {
+      display: inline-block;
+      font-family: var(--font-en);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #93C5FD;
+      margin-bottom: 8px;
+    }
+
+    .archive-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+    }
+
+    .archive-body {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: #94A3B8;
+      max-width: 440px;
+      margin: 0 auto 20px auto;
+    }
+
+    .archive-meta-tag {
+      font-size: 0.8125rem;
+      color: #CBD5E1;
+      margin-bottom: 18px;
+    }
+
+    .archive-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 320px;
+      min-height: 52px;
+      background: #FFFFFF;
+      color: var(--color-primary);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, background 0.2s ease;
+      touch-action: manipulation;
+    }
+
+    .archive-btn:hover {
+      transform: translateY(-2px);
+      background: #F8FAFC;
+    }
+
+    .archive-btn:active {
+      transform: translateY(0);
+    }
+
+    .brand-footer {
+      padding: 60px 0 20px 0;
+      text-align: center;
+      border-top: 1px solid var(--color-border);
+      margin-top: 40px;
+    }
+
+    .footer-brand {
+      font-family: var(--font-en);
+      font-size: 1.0625rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+    }
+
+    .footer-slogan {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-text-body);
+      margin-bottom: 12px;
+    }
+
+    .footer-sub {
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    .footer-copyright {
+      font-size: 0.6875rem;
+      color: var(--color-text-light);
+      font-family: var(--font-en);
+    }
+
+
+/* Editorial cards retain the published report's palette and geometry. */
+.report-section { padding:30px 0; }
+.editorial-card { padding:24px; border:1px solid var(--color-border); border-radius:20px; background:white; min-width:0; }
+.cards { display:grid; gap:14px; }
+p+p { margin-top:12px; }
+h3 { color:var(--color-primary); font-size:1.125rem; line-height:1.5; margin-bottom:10px; }
+.subtitle { color:var(--color-accent); font-size:.875rem; margin-bottom:14px; font-weight:600; }
+.date { font:700 .75rem/1.6 var(--font-en); color:var(--color-accent); margin-bottom:8px; }
+.flow-box { border:1px solid var(--color-border); border-radius:14px; padding:14px 16px; margin:12px 0; background:var(--color-surface-subtle); }
+.flow-box.new { background:var(--color-accent-subtle); border-color:var(--color-accent-border); }
+.flow-box strong { display:block; margin-bottom:6px; font-size:.875rem; color:var(--color-primary); }
+.takeaway { border-left:3px solid var(--color-accent); background:var(--color-accent-subtle); padding:14px 16px; margin-top:18px; border-radius:0 10px 10px 0; font-weight:600; }
+.sequence { list-style:none; padding:16px; margin:16px 0; border:1px solid var(--color-border); background:var(--color-surface-subtle); border-radius:14px; font-family:var(--font-en); }
+.sequence li+li { margin-top:6px; }
+.sequence li+li::before { content:'↓ '; color:var(--color-text-muted); }
+.words { color:var(--color-accent); font-family:var(--font-en); margin:12px 0; }
+.photo-links { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.photo-links a { display:inline-flex; align-items:center; min-height:44px; padding:8px 12px; border:1px solid var(--color-accent-border); border-radius:8px; color:var(--color-accent); background:var(--color-accent-subtle); font-size:.875rem; font-weight:600; }
+details { margin-top:14px; border-top:1px solid var(--color-border); }
+summary { cursor:pointer; min-height:48px; padding:12px 0; font-size:.875rem; font-weight:600; color:var(--color-accent); }
+.units { display:grid; gap:12px; }
+.unit { padding:14px; background:var(--color-surface-subtle); border-radius:14px; }
+.unit h4 { font-size:.875rem; color:var(--color-primary); }
+.unit p { font-family:var(--font-en); margin-top:6px; }
+.summary-list { display:grid; gap:18px; }
+.summary-list h3 { font-size:1rem; margin-bottom:6px; }
+.summary-list article+article { padding-top:18px; border-top:1px solid var(--color-border); }
+.class-record { text-align:center; background:var(--color-accent-subtle); border-color:var(--color-accent-border); }
+.class-total { font:800 2.5rem/1.4 var(--font-en); color:var(--color-accent); }
+.class-note { font-size:.875rem; color:var(--color-text-muted); }
+.archive-body { font-size:1rem; color:#CBD5E1; }
+.archive-btn { padding:12px; }
+.footer-copyright { color:var(--color-text-muted); }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--color-accent); outline-offset:4px; }
+.archive-btn:focus-visible { outline-color:#93C5FD; }
+[lang=en] { overflow-wrap:anywhere; }
+@media(max-width:480px) { .editorial-card { padding:20px; } }
+@media(prefers-reduced-motion:reduce) { * { transition:none!important; } .archive-btn:hover { transform:none; } }
+</style></head><body><main class="report-shell">
+<header class="report-hero">
+<div class="hero-meta"><span class="hero-badge-brand">LE ENGLISH</span><span class="hero-badge-student">김제이 | 초등학교 1학년</span><span class="hero-badge-term">2026 OCTOBER · MONTHLY LEARNING REPORT</span></div>
+<p class="subtitle">2026년 10월 김제이 학습보고서</p>
+<h1 class="hero-headline">읽어서 아는 단어에서,<br>스스로 꺼내 말하는 영어로</h1>
+<div class="hero-narrative"><p>10월 제이는 CVC 단어 읽기를 이어가면서 단어의 의미를 이해하고, 배운 영어를 직접 떠올려 말하는 활동으로 학습을 확장했습니다.</p><p>영어 단어를 읽고 그림과 뜻을 연결하는 기존 활동에서 나아가, 한글 뜻을 듣고 해당하는 영어 단어를 말하는 연습을 진행했습니다.</p><p>또한 Sight Words, 주제별 어휘, 단계적으로 길어지는 문장 읽기와 철자 쓰기를 함께 학습했습니다.</p></div>
+<p class="takeaway">이번 달의 핵심은 읽기 중심의 영어 학습을 의미 기반의 말하기 활동으로 연결하기 시작했다는 점입니다.</p>
+</header>
+<section class="report-section" aria-labelledby="highlights"><span class="section-eyebrow">01. LEARNING HIGHLIGHTS</span><h2 class="section-title" id="highlights">이번 달의 핵심 학습</h2><div class="cards">
+<article class="editorial-card"><p class="date">10월 7일 · 교사 일지</p><h3>CVC — 읽기에서 말하기로</h3>
+<div class="flow-box"><strong>기존 활동</strong><p>영어 단어 읽기 → 그림 확인 → 한글 뜻 연결</p></div>
+<div class="flow-box new"><strong>새로운 활동</strong><p>한글 뜻 듣기·보기 → 영어 단어 떠올리기 → 영어로 말하기</p></div>
+<p>단어를 보고 읽는 연습에서 벗어나, 의미를 바탕으로 영어 단어를 스스로 회상하는 활동을 진행했습니다.</p><p class="takeaway">영어를 알아보는 것에서, 배운 영어를 직접 꺼내 사용하는 연습으로 확장했습니다.</p></article>
+<article class="editorial-card"><p class="date">10월 12일</p><h3>Sight Words &amp; Sentence Reading</h3><p class="words" lang="en">an · get · do · your · said · yes</p><p>기초 빈출 어휘를 읽고 우리말 뜻과 연결하며, 손으로 철자를 쓰는 연습을 했습니다. 단어가 하나씩 더해지는 구와 문장도 읽었습니다.</p><ol class="sequence" lang="en" aria-label="단계적으로 길어지는 문장"><li>The</li><li>The desert</li><li>The desert is</li><li>The desert is dry.</li></ol><p>낱말을 읽는 활동을 넘어, 단어가 연결되어 하나의 문장을 이루는 과정을 연습했습니다.</p><div class="photo-links"><a href="https://drive.google.com/file/d/18tjr4fJCEodVA90YzBbHnsjgbzHW88d8/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="10/12 문장 읽기 (새 창)" title="20261012_172715.jpg">10/12 문장 읽기 ↗</a><a href="https://drive.google.com/file/d/1Pc_a84SOjYbhynni0Lcja4fzEBdx1J3i/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="10/12 Sight Words (새 창)" title="20261012_172734.jpg">10/12 Sight Words ↗</a></div></article>
+<article class="editorial-card"><p class="date">10월 14일 · 10월 19일</p><h3>Vocabulary — 주제별 어휘 읽기와 쓰기</h3><p>영어 어휘를 읽고 그림과 뜻을 연결했습니다. 한글 뜻을 적고 영어 철자를 써보는 연습도 함께 진행했습니다.</p><p>그림, 소리, 의미, 철자를 연결하며 다양한 주제의 어휘를 학습했습니다.</p>
+<details><summary>배운 단어 보기 · Unit 11·12·15·16</summary><div class="units">
+<div class="unit"><h4>10월 14일 · Unit 11</h4><p lang="en">people · river · travel · new · seed</p></div>
+<div class="unit"><h4>10월 14일 · Unit 12</h4><p lang="en">bird · fly · beak · wing · feather</p></div>
+<div class="unit"><h4>10월 19일 · Unit 15</h4><p lang="en">cold · snowboard · skate · sled · ski</p></div>
+<div class="unit"><h4>10월 19일 · Unit 16</h4><p lang="en">neck · long · arm · giraffe · tail</p></div>
+</div></details><div class="photo-links"><a href="https://drive.google.com/file/d/157RbrOa3HO_fnworKbM05aWSxsKETtUr/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="10/14 Unit 11 (새 창)" title="20261014_175052.jpg">10/14 Unit 11 ↗</a><a href="https://drive.google.com/file/d/1508Jk2XDe_EGvKFjTPrH7fzSGGwY3_Ur/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="10/14 Unit 12 (새 창)" title="20261014_175107.jpg">10/14 Unit 12 ↗</a><a href="https://drive.google.com/file/d/1OGQHLCAFY5xM5mO3MgIv1iVSnZy42DNZ/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="10/19 Unit 15 (새 창)" title="20261019_173006.jpg">10/19 Unit 15 ↗</a><a href="https://drive.google.com/file/d/18JRSjFdQPDvtW2IVTPHMBxGrl2Knjhxz/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="10/19 Unit 16 (새 창)" title="20261019_173017.jpg">10/19 Unit 16 ↗</a></div></article>
+</div></section>
+<section class="report-section" aria-labelledby="summary"><span class="section-eyebrow">02. LEARNING SUMMARY</span><h2 class="section-title" id="summary">세 가지 영역으로 보는 10월</h2><div class="editorial-card summary-list">
+<article><h3>읽기 <span lang="en">Reading</span></h3><p>CVC 단어와 기초 빈출 어휘를 읽고, 단어가 하나씩 추가되는 문장을 따라 읽으며 짧은 문장 읽기를 연습했습니다.</p></article>
+<article><h3>어휘·말하기 <span lang="en">Vocabulary &amp; Speaking</span></h3><p>영어를 보고 뜻을 확인하는 활동에 더하여, 한글 뜻을 듣고 영어 단어를 떠올려 말하는 활동을 진행했습니다.</p></article>
+<article><h3>쓰기 <span lang="en">Writing</span></h3><p>주제별 어휘의 뜻을 적고 영어 철자를 직접 써보며, 단어의 의미와 글자 형태를 함께 확인했습니다.</p></article>
+</div></section>
+<section class="report-section" aria-labelledby="next"><span class="section-eyebrow">03. NOVEMBER NEXT STEP</span><h2 class="section-title" id="next">읽기와 말하기의 연결 강화</h2><div class="editorial-card"><p>11월에는 CVC 단어 읽기를 지속하면서, 그림이나 한글 뜻을 보고 영어 단어를 스스로 떠올려 말하는 연습을 확대합니다.</p><p>Sight Words를 반복하여 짧은 문장 읽기의 기초를 다지고, 익숙한 단어를 활용한 간단한 영어 표현으로 연결해 나갑니다.</p><p class="takeaway">제이가 배운 단어를 읽고 이해하는 데서 나아가, 필요한 순간에 영어로 직접 표현하는 경험을 차근차근 쌓도록 지도하겠습니다.</p></div></section>
+<section class="report-section" aria-labelledby="record"><span class="section-eyebrow">04. CLASS RECORD</span><h2 class="section-title" id="record">10월 수업 현황</h2><div class="editorial-card class-record"><div class="class-total">7 / 8회</div><p>수업 이행률 <strong>87.5%</strong></p><p class="class-note">예정 수업 8회 중 7회 진행</p></div></section>
+<section class="report-section" aria-labelledby="archive"><div class="archive-card"><span class="archive-eyebrow">05. LEARNING ARCHIVE</span><h2 class="archive-title" id="archive">제이의 실제 학습 기록 보기</h2><p class="archive-body">각 학습 카드에서 10월 활동 사진을 확인하거나, 아래에서 전체 학습 기록을 살펴보실 수 있습니다.</p><a class="archive-btn" href="https://drive.google.com/drive/folders/1vPr6UP0MNCZOjDJ18OcULrv99U-qTHGu" target="_blank" rel="noopener noreferrer" aria-label="김제이 학습 기록물 보기 (새 창)"><span>김제이 학습 기록물 보기</span><span aria-hidden="true">↗</span></a></div></section>
+<footer class="brand-footer"><div class="footer-brand">LE ENGLISH | 리영어</div><div class="footer-slogan">아는 영어를, 사용할 수 있는 영어로.</div><div class="footer-sub">Small Steps · Big English · Brighter Days</div><div class="footer-copyright">2026 October Learning Report</div></footer>
+</main></body></html>
